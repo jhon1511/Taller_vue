@@ -4,7 +4,7 @@
       <div class="card">
         <div class="card-header fw-bold">paymodes</div>
         <div class="card-body">
-          <form @submit.prevent="updateCategorie">
+          <form @submit.prevent="updatePaymode">
             <div class="row mb-3">
               <label for="id" class="form-label">Código</label>
               <div class="input-group">
@@ -61,7 +61,6 @@
       </div>
     </div>
   </template>
-  
  
 <script>
 import axios from "axios";
@@ -80,15 +79,15 @@ export default {
   },
   methods: {
     cancelar() {
-      this.$router.push({ name: "Paymodes"  });
+      this.$router.push({ name: "Paymode"  });
     },
-    async updateCategorie() {
+    async updatePaymode() {
       const res = await axios.put(
        `http://127.0.0.1:8000/api/paymodes/${this.paymode.id}`,
         this.paymode
       );
       if (res.status == 200) {
-        this.$router.push({ name: "Paymodes" });
+        this.$router.push({ name: "Paymode" });
         Swal.fire({
           position: "top-end",
           icon: "success",
